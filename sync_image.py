@@ -28,12 +28,15 @@ def pull_image():
             subprocess.call("docker login -u hoston2008 -p asd7758521", shell=True)
             subprocess.call("docker push {}".format(image), shell=True)
         else:
-            new_name = "kenwood/" + name.split("/")[-1]
+            new_name = "hoston2008/" + name.split("/")[-1]
             cmd = "docker tag {0}   {1}".format(name, new_name)
             subprocess.call("docker pull {}".format(name), shell=True)
             subprocess.run(["docker", "tag", name, new_name])
             subprocess.call("docker login -u hoston2008 -p asd7758521", shell=True)
             subprocess.call("docker push {}".format(new_name), shell=True)
+
+
+
         
 if __name__ == "__main__":
     pull_image()
